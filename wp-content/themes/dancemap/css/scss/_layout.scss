@@ -1,0 +1,41 @@
+@mixin breakpoint($break){
+	@if $break == tablet{
+		@media screen and (min-width: 30em){@content;}
+	}@else if $break == desktop{
+		@media screen and (min-width: 55em){@content;}
+	}
+}
+
+.site{
+	position:relative;
+	height:100%;
+	width:100%;
+}
+.container{
+	background:#fff;
+	padding:1em;
+	box-shadow:0 0 0.5em rgba(50,50,50, 0.5);
+}
+.content{
+
+	padding-bottom:4em;
+	
+	@include breakpoint(desktop){
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		width:20em;
+		z-index:20;
+	}
+}
+
+
+
+.site-footer{
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:25;
+}

@@ -1,0 +1,25 @@
+<?php
+
+$query = new WP_query(array('post_type' => 'network', 'posts_per_page'=>-1, 'orderby' => 'title', 'order' => 'ASC'));
+
+$networks = array();
+
+if($query->have_posts()):
+
+	while($query->have_posts()):
+
+		$query->the_post();
+
+	$networks[] = get_the_title();
+
+	endwhile;
+
+endif;
+
+?>
+
+
+
+var networks =  <?php echo json_encode( $networks ); ?>;
+
+console.log(networks);
